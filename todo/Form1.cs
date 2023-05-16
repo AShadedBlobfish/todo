@@ -216,26 +216,65 @@ namespace todo
             isComplete.Add(false);
             checkedListBox1.DataSource = null;
             checkedListBox1.DataSource = Items;
+            for (int j = 0; j < isComplete.Count; j++)
+            {
+                if (isComplete[j])
+                {
+                    checkedListBox1.SetItemChecked(j, true);
+                }
+                else
+                {
+                    checkedListBox1.SetItemChecked(j, false);
+                }
+            }
             updateItemsFile();
         }
 
         private void remove_Click(object sender, EventArgs e)
         {
-            Items.RemoveAt(checkedListBox1.SelectedIndex);
-            isComplete.RemoveAt(checkedListBox1.SelectedIndex);
-            checkedListBox1.DataSource = null;
-            checkedListBox1.DataSource = Items;
-            updateItemsFile();
+            if (checkedListBox1.SelectedItem != null)
+            {
+                Items.RemoveAt(checkedListBox1.SelectedIndex);
+                isComplete.RemoveAt(checkedListBox1.SelectedIndex);
+                checkedListBox1.DataSource = null;
+                checkedListBox1.DataSource = Items;
+                for (int j = 0; j < isComplete.Count; j++)
+                {
+                    if (isComplete[j])
+                    {
+                        checkedListBox1.SetItemChecked(j, true);
+                    }
+                    else
+                    {
+                        checkedListBox1.SetItemChecked(j, false);
+                    }
+                }
+                updateItemsFile();
+            }
         }
 
         private void edit_Click(object sender, EventArgs e)
         {
-            Form4 form4 = new Form4(1);
-            form4.ShowDialog();
-            Items[checkedListBox1.SelectedIndex] = form4.name;
-            checkedListBox1.DataSource = null;
-            checkedListBox1.DataSource = Items;
-            updateItemsFile();
+            if (checkedListBox1.SelectedItem != null)
+            {
+                Form4 form4 = new Form4(1);
+                form4.ShowDialog();
+                Items[checkedListBox1.SelectedIndex] = form4.name;
+                checkedListBox1.DataSource = null;
+                checkedListBox1.DataSource = Items;
+                for (int j = 0; j < isComplete.Count; j++)
+                {
+                    if (isComplete[j])
+                    {
+                        checkedListBox1.SetItemChecked(j, true);
+                    }
+                    else
+                    {
+                        checkedListBox1.SetItemChecked(j, false);
+                    }
+                }
+                updateItemsFile();
+            }
         }
     }
 }

@@ -212,22 +212,25 @@ namespace todo
         {
             Form4 form4 = new Form4(0);
             form4.ShowDialog();
-            Items.Add(form4.name);
-            isComplete.Add(false);
-            checkedListBox1.DataSource = null;
-            checkedListBox1.DataSource = Items;
-            for (int j = 0; j < isComplete.Count; j++)
+            if (form4.DialogResult == DialogResult.OK)
             {
-                if (isComplete[j])
+                Items.Add(form4.name);
+                isComplete.Add(false);
+                checkedListBox1.DataSource = null;
+                checkedListBox1.DataSource = Items;
+                for (int j = 0; j < isComplete.Count; j++)
                 {
-                    checkedListBox1.SetItemChecked(j, true);
+                    if (isComplete[j])
+                    {
+                        checkedListBox1.SetItemChecked(j, true);
+                    }
+                    else
+                    {
+                        checkedListBox1.SetItemChecked(j, false);
+                    }
                 }
-                else
-                {
-                    checkedListBox1.SetItemChecked(j, false);
-                }
+                updateItemsFile();
             }
-            updateItemsFile();
         }
 
         private void remove_Click(object sender, EventArgs e)
@@ -259,21 +262,24 @@ namespace todo
             {
                 Form4 form4 = new Form4(1);
                 form4.ShowDialog();
-                Items[checkedListBox1.SelectedIndex] = form4.name;
-                checkedListBox1.DataSource = null;
-                checkedListBox1.DataSource = Items;
-                for (int j = 0; j < isComplete.Count; j++)
+                if (form4.DialogResult == DialogResult.OK)
                 {
-                    if (isComplete[j])
+                    Items[checkedListBox1.SelectedIndex] = form4.name;
+                    checkedListBox1.DataSource = null;
+                    checkedListBox1.DataSource = Items;
+                    for (int j = 0; j < isComplete.Count; j++)
                     {
-                        checkedListBox1.SetItemChecked(j, true);
+                        if (isComplete[j])
+                        {
+                            checkedListBox1.SetItemChecked(j, true);
+                        }
+                        else
+                        {
+                            checkedListBox1.SetItemChecked(j, false);
+                        }
                     }
-                    else
-                    {
-                        checkedListBox1.SetItemChecked(j, false);
-                    }
+                    updateItemsFile();
                 }
-                updateItemsFile();
             }
         }
     }

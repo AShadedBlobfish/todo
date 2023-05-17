@@ -31,6 +31,7 @@ namespace todo
             name = textBox1.Text;
             if (name != "" && !Lists.Contains(name))
             {
+                this.DialogResult = DialogResult.OK;
                 Close();
             }
             else if (name == "")

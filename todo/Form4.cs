@@ -31,6 +31,7 @@ namespace todo
             name = textBox1.Text;
             if (name != "")
             {
+                this.DialogResult = DialogResult.OK;
                 Close();
             }
             else

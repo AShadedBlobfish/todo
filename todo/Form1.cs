@@ -50,6 +50,7 @@ namespace todo
             noListSelected();
         }
 
+        // Run when no list is selected - Essentially initialises the form
         private void noListSelected()
         {
             label1.Text = "Choose a list";
@@ -78,22 +79,27 @@ namespace todo
             // Shows a dialog (Form2) for naming and creating a new list
             Form2 form2 = new Form2(Lists);
             form2.ShowDialog();
-            Lists.Add(form2.name);  // Adds the new list to "Lists"
-            // Needed to update the side panel
-            lists.DataSource = null;
-            lists.DataSource = Lists;
-            updateListsFile();
+            if (form2.DialogResult == DialogResult.OK)
+            {
+                Lists.Add(form2.name);  // Adds the new list to "Lists"
+                // Needed to update the side panel
+                lists.DataSource = null;
+                lists.DataSource = Lists;
+                updateListsFile();
 
-            checkedListBox1.DataSource = null;
+                checkedListBox1.DataSource = null;
 
-            lists.SelectedIndex = Lists.Count() - 1;    // Selects the last element of the listbox (The list that was just created)
+                lists.SelectedIndex = Lists.Count() - 1;    // Selects the last element of the listbox (The list that was just created)
+            }
         }
 
+        // Called when a new list is selected
         private void lists_SelectedIndexChanged(object sender, EventArgs e)
         {
+            // Initialises "Items" and "isComplete", then updates the form to display the list which is selected
             Items.Clear();
             isComplete.Clear();
-            if (lists.SelectedIndex == -1)
+            if (lists.SelectedIndex == -1)  // Since 'lists.SelectedIndex = -1' changes the SelectedIndex, this prevents the code from running when there is nothing selected
             {
                 noListSelected();
             }
@@ -147,8 +153,10 @@ namespace todo
             }
         }
 
+        // Called whenever an item is checked or unchecked
         private void checkedListBox1_ItemCheck(object sender, ItemCheckEventArgs e)
         {
+            // Updates isComplete and <listName>.txt
             if (e.NewValue == CheckState.Checked)
             {
                 isComplete[e.Index] = true;
@@ -160,6 +168,7 @@ namespace todo
             updateItemsFile();
         }
 
+        // Updates <listName>.txt
         private void updateItemsFile()
         {
             string stringToWrite = "Warning: Modifying this file is not recommended. If this file is corrupted, the program will not work\n\n";
@@ -179,6 +188,7 @@ namespace todo
             File.WriteAllText(itemsPath, stringToWrite);
         }
 
+        // Updates lists.txt
         private void updateListsFile()
         {
             string stringToWrite = "Warning: Modifying this file is not recommended. If this file is corrupted, the program will not work\n\n";
@@ -189,12 +199,13 @@ namespace todo
             File.WriteAllText(@"data\lists.txt", stringToWrite);
         }
 
+        // Delete List button - Prompts to confirm deletion (Form3) and deletes the list if the OK button is clicked
         private void delete_Click(object sender, EventArgs e)
         {
             int items = Items.Count;
             Form3 form3 = new Form3(lists.SelectedItem.ToString(), items);
             var result = form3.ShowDialog();
-            if (result == DialogResult.OK)
+            if (result == DialogResult.OK)  // Checks whether the OK button was clicked and prevents an exception occuring if the dialog is closed
             {
                 Lists.Remove(lists.SelectedItem.ToString());
                 lists.DataSource = null;
@@ -204,15 +215,16 @@ namespace todo
                 File.Delete(itemsPath);
                 checkedListBox1.DataSource = null;
                 checkedListBox1.DataSource = Items;
-                updateListsFile();
+                updateListsFile();  // Update lists.txt
             }
         }
 
+        // Add button - Prompts to enter a name for the new item (Form4) and updates "Items", "isComplete" and <listName>.txt
         private void add_Click(object sender, EventArgs e)
         {
             Form4 form4 = new Form4(0);
             form4.ShowDialog();
-            if (form4.DialogResult == DialogResult.OK)
+            if (form4.DialogResult == DialogResult.OK)  // Prevents an exception occuring if the dialog is closed
             {
                 Items.Add(form4.name);
                 isComplete.Add(false);
@@ -229,10 +241,11 @@ namespace todo
                         checkedListBox1.SetItemChecked(j, false);
                     }
                 }
-                updateItemsFile();
+                updateItemsFile();  // Update the file
             }
         }
 
+        // Remove button - Removes the currently selected item from the list
         private void remove_Click(object sender, EventArgs e)
         {
             if (checkedListBox1.SelectedItem != null)
@@ -252,17 +265,18 @@ namespace todo
                         checkedListBox1.SetItemChecked(j, false);
                     }
                 }
-                updateItemsFile();
+                updateItemsFile();  // Update the file again
             }
         }
 
+        // Rename button - Prompts to enter a new name for the selected item (Form4) and updates "Items" and <listName>.txt
         private void edit_Click(object sender, EventArgs e)
         {
             if (checkedListBox1.SelectedItem != null)
             {
                 Form4 form4 = new Form4(1);
                 form4.ShowDialog();
-                if (form4.DialogResult == DialogResult.OK)
+                if (form4.DialogResult == DialogResult.OK)  // Prevents an exception occuring if the dialog is closed
                 {
                     Items[checkedListBox1.SelectedIndex] = form4.name;
                     checkedListBox1.DataSource = null;
@@ -278,7 +292,7 @@ namespace todo
                             checkedListBox1.SetItemChecked(j, false);
                         }
                     }
-                    updateItemsFile();
+                    updateItemsFile();  // Update the file again
                 }
             }
         }

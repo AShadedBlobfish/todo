@@ -12,7 +12,7 @@ namespace todo
 {
     public partial class Form2 : Form
     {
-        public string name;
+        public string name; // This will be accessed by the parent (Form1) after the dialog has closed
         Size size1 = new Size(250, 150);
         Size size2 = new Size(250, 170);
         Size sizea1 = new Size(50, 110);

@@ -1,9 +1,9 @@
 ---
 name: Feature request
 about: Suggest a feature that you want to see
-title: ''
-labels: ''
-assignees: ''
+title: "[FR]"
+labels: enhancement
+assignees: AShadedBlobfish
 
 ---
 

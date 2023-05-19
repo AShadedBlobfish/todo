@@ -1,9 +1,9 @@
 ---
 name: Bug report
 about: I can't fix bugs if I don't know about them
-title: ''
-labels: ''
-assignees: ''
+title: "[BUG]"
+labels: bug
+assignees: AShadedBlobfish
 
 ---
 

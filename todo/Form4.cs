@@ -15,11 +15,12 @@ namespace todo
         public string name;
         Size size1 = new Size(250, 150);
         Size size2 = new Size(250, 170);
-        public Form4(int mode)
+        public Form4(int mode, string oldName = null)
         {
             InitializeComponent();
             if (mode == 1)
             {
+                textBox1.Text = oldName;
                 label1.Text = "Enter new name for item";
             }
             label2.Hide();

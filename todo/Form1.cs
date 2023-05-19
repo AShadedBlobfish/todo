@@ -17,7 +17,7 @@ namespace todo
     {
         public List<string> Lists = new List<string>(); // A List which will contain the names of all the todo lists the user has created
         List<string> Items = new List<string>(); // A List which will contain the items in the list which is currently being viewed
-        List<bool> isComplete = new List<bool>();
+        List<bool> isComplete = new List<bool>();   // A list which will contain the check states of each item
         string listsPath = @"data\lists.txt";   // The path to the text file where these names are stored
         string itemsPath;  // The path to the folder which will contain each list's individual items
         public Form1()
@@ -274,7 +274,7 @@ namespace todo
         {
             if (checkedListBox1.SelectedItem != null)
             {
-                Form4 form4 = new Form4(1);
+                Form4 form4 = new Form4(1, checkedListBox1.SelectedItem.ToString());
                 form4.ShowDialog();
                 if (form4.DialogResult == DialogResult.OK)  // Prevents an exception occuring if the dialog is closed
                 {

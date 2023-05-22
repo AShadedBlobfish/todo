@@ -3,11 +3,15 @@ A simple .NET app for making todo lists
 
 ---------------------------------------------------------------------
 
-Changes in version 1.1.2:
+Changes in version 1.1.3:
 
-	- Item rename dialog now autofills the current name, which makes it easier if you just want to correct a spelling mistake or similar
+	Features:
+		- Added Rename List button
+	Bug fixes:
+		- Fixed the titles of some dialogs not matching their prompts
+		- Remove Item and Rename Item buttons are now disabled (grayed out) if no item is selected
 
-No known issues in version 1.1.2
+No known issues in version 1.1.3
 
 Please feel free to create a new issue if you find something
 

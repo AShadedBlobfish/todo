@@ -40,6 +40,7 @@
             this.remove = new System.Windows.Forms.Button();
             this.edit = new System.Windows.Forms.Button();
             this.delete = new System.Windows.Forms.Button();
+            this.renameList = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lists
@@ -111,6 +112,7 @@
             this.checkedListBox1.Name = "checkedListBox1";
             this.checkedListBox1.Size = new System.Drawing.Size(230, 364);
             this.checkedListBox1.TabIndex = 7;
+            this.checkedListBox1.SelectedIndexChanged += new System.EventHandler(this.checkedListBox1_SelectedIndexChanged);
             // 
             // label6
             // 
@@ -155,7 +157,7 @@
             // delete
             // 
             this.delete.ForeColor = System.Drawing.Color.Red;
-            this.delete.Location = new System.Drawing.Point(285, 432);
+            this.delete.Location = new System.Drawing.Point(285, 429);
             this.delete.Name = "delete";
             this.delete.Size = new System.Drawing.Size(91, 25);
             this.delete.TabIndex = 13;
@@ -163,11 +165,23 @@
             this.delete.UseVisualStyleBackColor = true;
             this.delete.Click += new System.EventHandler(this.delete_Click);
             // 
+            // renameList
+            // 
+            this.renameList.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.renameList.Location = new System.Drawing.Point(192, 429);
+            this.renameList.Name = "renameList";
+            this.renameList.Size = new System.Drawing.Size(91, 25);
+            this.renameList.TabIndex = 14;
+            this.renameList.Text = "Rename List";
+            this.renameList.UseVisualStyleBackColor = true;
+            this.renameList.Click += new System.EventHandler(this.renameList_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(384, 461);
+            this.Controls.Add(this.renameList);
             this.Controls.Add(this.delete);
             this.Controls.Add(this.edit);
             this.Controls.Add(this.remove);
@@ -205,6 +219,7 @@
         private System.Windows.Forms.Button remove;
         private System.Windows.Forms.Button edit;
         private System.Windows.Forms.Button delete;
+        private System.Windows.Forms.Button renameList;
     }
 }
 

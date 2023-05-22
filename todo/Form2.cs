@@ -18,11 +18,17 @@ namespace todo
         Size sizea1 = new Size(50, 110);
         Size sizea2 = new Size(49, 110);
         List<string> Lists = new List<string>();
-        public Form2(List<string> lists)
+        public Form2(List<string> lists, int mode = 0, string currentName = null)
         {
             InitializeComponent();
             this.Size = size1;
             label2.Hide();
+            if (mode == 1)
+            {
+                label1.Text = "Enter a new name for the list";
+                textBox1.Text = currentName;
+                this.Text = "Rename List";
+            }
             Lists = lists;
         }
 

@@ -72,6 +72,7 @@ namespace todo
             remove.Hide();
             edit.Hide();
             delete.Hide();
+            renameList.Hide();
         }
 
         private void newList_Click(object sender, EventArgs e)
@@ -116,8 +117,11 @@ namespace todo
                 checkedListBox1.DataSource = null;
                 add.Show();
                 remove.Show();
+                remove.Enabled = false;
                 edit.Show();
+                edit.Enabled = false;
                 delete.Show();
+                renameList.Show();
 
                 itemsPath = @"data\lists\" + lists.SelectedItem.ToString() + ".txt";
                 if (!File.Exists(itemsPath))
@@ -294,6 +298,34 @@ namespace todo
                     }
                     updateItemsFile();  // Update the file again
                 }
+            }
+        }
+
+        private void renameList_Click(object sender, EventArgs e)
+        {
+            Form2 form2 = new Form2(Lists, 1, lists.SelectedItem.ToString());
+            form2.ShowDialog();
+            if (form2.DialogResult == DialogResult.OK)
+            {
+                Lists[lists.SelectedIndex] = form2.name;
+                lists.DataSource = null;
+                lists.DataSource = Lists;
+                label6.Text = lists.SelectedItem.ToString();
+                updateListsFile();
+            }
+        }
+
+        private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (checkedListBox1.SelectedIndex != -1)
+            {
+                remove.Enabled = true;
+                edit.Enabled = true;
+            }
+            else
+            {
+                remove.Enabled = false;
+                edit.Enabled = false;
             }
         }
     }

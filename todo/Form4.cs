@@ -20,6 +20,7 @@ namespace todo
             InitializeComponent();
             if (mode == 1)
             {
+                this.Text = "Rename Item";
                 textBox1.Text = oldName;
                 label1.Text = "Enter new name for item";
             }

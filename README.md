@@ -3,15 +3,12 @@ A simple .NET app for making todo lists
 
 ---------------------------------------------------------------------
 
-Changes in version 1.1.3:
+Changes in version 1.1.4:
 
 	Features:
-		- Added Rename List button
-	Bug fixes:
-		- Fixed the titles of some dialogs not matching their prompts
-		- Remove Item and Rename Item buttons are now disabled (grayed out) if no item is selected
+		- Increased character limit for item names from 25 to 40
 
-No known issues in version 1.1.3
+No known issues in version 1.1.4
 
 Please feel free to create a new issue if you find something
 

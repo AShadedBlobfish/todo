@@ -73,6 +73,7 @@ namespace todo
             edit.Hide();
             delete.Hide();
             renameList.Hide();
+            reorder.Hide();
         }
 
         private void newList_Click(object sender, EventArgs e)
@@ -122,6 +123,7 @@ namespace todo
                 edit.Enabled = false;
                 delete.Show();
                 renameList.Show();
+                reorder.Show();
 
                 itemsPath = @"data\lists\" + lists.SelectedItem.ToString() + ".txt";
                 if (!File.Exists(itemsPath))
@@ -326,6 +328,16 @@ namespace todo
             {
                 remove.Enabled = false;
                 edit.Enabled = false;
+            }
+        }
+
+        private void reorder_Click(object sender, EventArgs e)
+        {
+            Form5 form5 = new Form5(Items, lists.SelectedItem.ToString());
+            form5.ShowDialog();
+            if (form5.DialogResult == DialogResult.OK)
+            {
+                
             }
         }
     }

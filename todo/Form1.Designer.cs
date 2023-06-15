@@ -41,6 +41,7 @@
             this.edit = new System.Windows.Forms.Button();
             this.delete = new System.Windows.Forms.Button();
             this.renameList = new System.Windows.Forms.Button();
+            this.reorder = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lists
@@ -107,10 +108,11 @@
             // 
             // checkedListBox1
             // 
+            this.checkedListBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.checkedListBox1.FormattingEnabled = true;
-            this.checkedListBox1.Location = new System.Drawing.Point(146, 30);
+            this.checkedListBox1.Location = new System.Drawing.Point(116, 30);
             this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(230, 364);
+            this.checkedListBox1.Size = new System.Drawing.Size(260, 364);
             this.checkedListBox1.TabIndex = 7;
             this.checkedListBox1.SelectedIndexChanged += new System.EventHandler(this.checkedListBox1_SelectedIndexChanged);
             // 
@@ -118,7 +120,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label6.Location = new System.Drawing.Point(145, 7);
+            this.label6.Location = new System.Drawing.Point(114, 7);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(135, 19);
             this.label6.TabIndex = 9;
@@ -126,7 +128,7 @@
             // 
             // add
             // 
-            this.add.Location = new System.Drawing.Point(192, 400);
+            this.add.Location = new System.Drawing.Point(130, 400);
             this.add.Name = "add";
             this.add.Size = new System.Drawing.Size(60, 25);
             this.add.TabIndex = 10;
@@ -136,7 +138,7 @@
             // 
             // remove
             // 
-            this.remove.Location = new System.Drawing.Point(254, 400);
+            this.remove.Location = new System.Drawing.Point(316, 400);
             this.remove.Name = "remove";
             this.remove.Size = new System.Drawing.Size(60, 25);
             this.remove.TabIndex = 11;
@@ -146,7 +148,7 @@
             // 
             // edit
             // 
-            this.edit.Location = new System.Drawing.Point(316, 400);
+            this.edit.Location = new System.Drawing.Point(254, 400);
             this.edit.Name = "edit";
             this.edit.Size = new System.Drawing.Size(60, 25);
             this.edit.TabIndex = 12;
@@ -176,11 +178,22 @@
             this.renameList.UseVisualStyleBackColor = true;
             this.renameList.Click += new System.EventHandler(this.renameList_Click);
             // 
+            // reorder
+            // 
+            this.reorder.Location = new System.Drawing.Point(192, 400);
+            this.reorder.Name = "reorder";
+            this.reorder.Size = new System.Drawing.Size(60, 25);
+            this.reorder.TabIndex = 15;
+            this.reorder.Text = "Edit";
+            this.reorder.UseVisualStyleBackColor = true;
+            this.reorder.Click += new System.EventHandler(this.reorder_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(384, 461);
+            this.Controls.Add(this.reorder);
             this.Controls.Add(this.renameList);
             this.Controls.Add(this.delete);
             this.Controls.Add(this.edit);
@@ -220,6 +233,7 @@
         private System.Windows.Forms.Button edit;
         private System.Windows.Forms.Button delete;
         private System.Windows.Forms.Button renameList;
+        private System.Windows.Forms.Button reorder;
     }
 }
 

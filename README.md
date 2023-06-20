@@ -8,8 +8,9 @@ Changes in version 1.1.5:
 	Bugfixes:
 		- Fixed a bug which deleted all list items when renaming a list
 
-No known issues in version 1.1.5<br>
-Please feel free to create a new issue if you find something
+Known issues in version 1.1.5:
+
+	- Item check status resets when renaming a list
 
 ---------------------------------------------------------------------
 

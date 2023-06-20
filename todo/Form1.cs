@@ -209,6 +209,16 @@ namespace todo
                 stringToWrite += String + "\n";
             }
             File.WriteAllText(@"data\lists.txt", stringToWrite);
+            string[] listFiles = Directory.GetFiles(@"data\lists");
+            foreach (string file in listFiles)
+            {
+                int backslash = file.LastIndexOf('\\') + 1;
+                int dot = file.LastIndexOf('.');
+                if (!Lists.Contains(file.Substring(backslash, dot - backslash)))
+                {
+                    File.Delete(file);
+                }
+            }
         }
 
         // Delete List button - Prompts to confirm deletion (Form3) and deletes the list if the OK button is clicked

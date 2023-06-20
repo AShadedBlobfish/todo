@@ -3,12 +3,12 @@ A simple .NET app for making todo lists
 
 ---------------------------------------------------------------------
 
-Changes in version 1.1.6:
+Changes in version 1.1.7:
 
-	Bugfixes:
-		- Fixed a bug which reset the checkstate of all items when renaming a list
+	Features:
+		- Old list files (from lists that have either been deleted or renamed) are now deleted automatically
 
-No known issues in version 1.1.6<br>
+No known issues in version 1.1.7<br>
 Please feel free to create a new issue if you find something
 
 ---------------------------------------------------------------------

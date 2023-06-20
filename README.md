@@ -3,12 +3,12 @@ A simple .NET app for making todo lists
 
 ---------------------------------------------------------------------
 
-Changes in version 1.1.4:
+Changes in version 1.1.5:
 
-	Features:
-		- Increased character limit for item names from 25 to 40
+	Bugfixes:
+		- Fixed a bug which deleted all list items when renaming a list
 
-No known issues in version 1.1.4<br>
+No known issues in version 1.1.5<br>
 Please feel free to create a new issue if you find something
 
 ---------------------------------------------------------------------

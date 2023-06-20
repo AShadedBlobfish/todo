@@ -8,14 +8,12 @@ Changes in version 1.1.4:
 	Features:
 		- Increased character limit for item names from 25 to 40
 
-No known issues in version 1.1.4
-
+No known issues in version 1.1.4<br>
 Please feel free to create a new issue if you find something
 
 ---------------------------------------------------------------------
 
-Requires:
+Requirements:
 
-Windows 10 Version 1803 or later
-
+Windows 10 Version 1803 or later<br>
 OR Windows 7 or later with .NET Framework 4.7.2 installed from https://dotnet.microsoft.com/en-us/download/dotnet-framework/net472

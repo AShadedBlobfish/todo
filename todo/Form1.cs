@@ -98,6 +98,7 @@ namespace todo
         private void updateItemsList()
         {
             Items.Clear();
+            isComplete.Clear();
             string[] itemStrings = File.ReadAllLines(itemsPath);
             for (int i = 2; i < itemStrings.Length; i++)
             {
@@ -318,12 +319,24 @@ namespace todo
                 File.Move(itemsPath, @"data/lists/" + form2.name + ".txt");
                 itemsPath = @"data/lists/" + form2.name + ".txt";
                 updateItemsList();
+                updateItemsFile();
                 int index = lists.SelectedIndex;
                 lists.DataSource = null;
                 lists.DataSource = Lists;
                 lists.SelectedIndex = index;
                 checkedListBox1.DataSource = null;
                 checkedListBox1.DataSource = Items;
+                for (int j = 0; j < isComplete.Count; j++)
+                {
+                    if (isComplete[j])
+                    {
+                        checkedListBox1.SetItemChecked(j, true);
+                    }
+                    else
+                    {
+                        checkedListBox1.SetItemChecked(j, false);
+                    }
+                }
                 label6.Text = lists.SelectedItem.ToString();
                 updateListsFile();
             }

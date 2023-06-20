@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Security.Cryptography.X509Certificates;
 using System.Globalization;
+using System.Diagnostics;
 
 namespace todo
 {
@@ -94,6 +95,25 @@ namespace todo
             }
         }
 
+        private void updateItemsList()
+        {
+            Items.Clear();
+            string[] itemStrings = File.ReadAllLines(itemsPath);
+            for (int i = 2; i < itemStrings.Length; i++)
+            {
+                string item = itemStrings[i];
+                Items.Add(item.Substring(0, item.Length - 3));
+                if (item.Substring(item.Length - 1) == "1")
+                {
+                    isComplete.Add(true);
+                }
+                else
+                {
+                    isComplete.Add(false);
+                }
+            }
+        }
+
         // Called when a new list is selected
         private void lists_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -128,20 +148,7 @@ namespace todo
                 {
                     File.WriteAllText(itemsPath, "Warning: Modifying this file is not recommended. If this file is corrupted, the program will not work\n\n");
                 }
-                string[] itemStrings = File.ReadAllLines(itemsPath);
-                for (int i = 2; i < itemStrings.Length; i++)
-                {
-                    string item = itemStrings[i];
-                    Items.Add(item.Substring(0, item.Length-3));
-                    if (item.Substring(item.Length-1) == "1")
-                    {
-                        isComplete.Add(true);
-                    }
-                    else
-                    {
-                        isComplete.Add(false);
-                    }
-                }
+                updateItemsList();
                 checkedListBox1.DataSource = Items;
                 for (int j = 0; j < isComplete.Count; j++)
                 {
@@ -308,8 +315,15 @@ namespace todo
             if (form2.DialogResult == DialogResult.OK)
             {
                 Lists[lists.SelectedIndex] = form2.name;
+                File.Move(itemsPath, @"data/lists/" + form2.name + ".txt");
+                itemsPath = @"data/lists/" + form2.name + ".txt";
+                updateItemsList();
+                int index = lists.SelectedIndex;
                 lists.DataSource = null;
                 lists.DataSource = Lists;
+                lists.SelectedIndex = index;
+                checkedListBox1.DataSource = null;
+                checkedListBox1.DataSource = Items;
                 label6.Text = lists.SelectedItem.ToString();
                 updateListsFile();
             }
